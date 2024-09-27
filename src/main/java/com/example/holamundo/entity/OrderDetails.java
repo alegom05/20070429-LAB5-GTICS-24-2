@@ -10,7 +10,7 @@ public class OrderDetails {
 
         @EmbeddedId
         private OrderDetailId id;
-
+        /*
         @MapsId("orderID")
         @ManyToOne
         @JoinColumn(name = "OrderID")
@@ -77,5 +77,5 @@ public class OrderDetails {
         public void setDiscount(Double discount) {
             this.discount = discount;
         }
-
+        */
 }

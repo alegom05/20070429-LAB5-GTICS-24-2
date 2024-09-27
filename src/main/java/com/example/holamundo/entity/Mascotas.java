@@ -4,15 +4,15 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
-@Entity (name="persona")
-public class Persona {
+@Entity(name="mascotas")
+public class Mascotas {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idPersona")
     private int idPersona;
 
@@ -28,5 +28,8 @@ public class Persona {
     @Column(name = "tipo_persona")
     private String tipoPersona;
 
+    @ManyToOne
+    @JoinColumn (name="Persona_idPersona")
+    private Persona persona;
 
 }

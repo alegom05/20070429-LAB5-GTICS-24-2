@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/navbar.html :: header( title = 'Productos')}"></head>
+<body>
+<main>
+    <div class="container px-4 pb-5">
+        <nav th:replace="~{fragments/navbar.html :: navbar( active = 'Product')}"></nav>
+        <h1 class="pb-2 border-bottom">Lista de viajes programados</h1>
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{'/product/new'}">Nuevo Producto</a>
+        <table class="table">
+            <thead>
+            <tr>                <th>#</th>
+                <th>Persona Titular</th>
+                <th>Destino</th>
+                <th>Cantidad de Perros</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="viaje, info : ${listaViajes}">
+                <td th:text="${info.index + 1}"></td>
+                <td th:text="${viaje.persona.nombre}"></td>
+                <td th:text="${viaje.lugar.nombreLugar}"></td>
+
+                <!--
+                <td th:text="${i.category.categoryname}"></td>
+                <td th:text="${i.supplier.companyname}"></td>
+                <td th:text="${i.unitprice}"></td>
+                <td th:text="${i.unitsinstock}"></td>
+                <td th:text="${i.discontinued?'si':'no'}"></td>
+                <td><a class="btn btn-primary"
+                       th:href="@{'/viaje/edit' + '?id=' + ${viajes.id}}">Ver</a>
+                </td>
+                <td><a class="btn btn-primary"
+                       th:href="@{'/viaje/edit' + '?id=' + ${viajes.id}}">Editar</a>
+                </td>
+                <td><a class="btn btn-danger"
+                       th:href="@{'/viaje/delete' + '?id=' + ${viajes.id}}">Borrar</a>
+                </td>
+                -->
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script th:replace="~{fragments/navbar.html :: footer-bootstrap}"></script>
+</body>
+</html>

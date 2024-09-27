@@ -1,51 +1,25 @@
 package com.example.holamundo.controllers;
 
-import com.example.holamundo.entity.*;
 import com.example.holamundo.repository.*;
-import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
-@RequestMapping("/product")
-public class ProductController {
-
-    /*@GetMapping("/")
-    @ResponseBody
-    public String unaPersona() {
-        return "olapaola5";
-    }*/
-    final ShipperRepository shipperRepository;
-    final CategoryRepository categoryRepository;
-    final ProductRepository productRepository;
-    final SupplierRepository supplierRepository;
-    final OrderDetailsRepository orderDetailsRepository;
-
-    public ProductController(ProductRepository productRepository,
-                             CategoryRepository categoryRepository,
-                             SupplierRepository supplierRepository,
-                            OrderDetailsRepository orderDetailsRepository,
-                            ShipperRepository shipperRepository) {
-        this.productRepository = productRepository;
-        this.categoryRepository = categoryRepository;
-        this.supplierRepository = supplierRepository;
-        this.orderDetailsRepository = orderDetailsRepository;
-        this.shipperRepository = shipperRepository;
-    }
+@RequestMapping("/viaje")
+public class ViajeController {
+    
+    @Autowired
+    ViajeRepository viajeRepository;
 
     @GetMapping({"/",""})
-    public String listaProductos(Model model, @RequestParam(required = false) String zona) {
-        model.addAttribute("listaProductos", productRepository.findAll());
-        return "product/list";
+    public String listaViajesProgramados(Model model, @RequestParam(required = false) String zona) {
+        model.addAttribute("listaViajes", viajeRepository.findAll());
+        return "viaje/list";
     }
 
+    /*
     @GetMapping(value = "new")
     public String nuevoProductoFrm(Model model, @ModelAttribute("product") Product product) {
         List<Category> listaCategorias = categoryRepository.findAll();
@@ -128,8 +102,10 @@ public class ProductController {
             attr.addFlashAttribute("msg", "Producto borrado exitosamente");
         }
         return "redirect:/product";
+        }
+     */
 
-    }
+
 
 
 
